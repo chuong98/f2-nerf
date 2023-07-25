@@ -1,0 +1,6 @@
+click
+numpy
+OmegaConf
+hydra-core
+opencv-python
+scipy
