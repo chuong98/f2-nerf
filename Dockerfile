@@ -47,4 +47,35 @@ RUN git clone --recursive https://github.com/cvg/Hierarchical-Localization/ \
     && cd Hierarchical-Localization \
     && python -m pip install -e .
 
+RUN apt-get update \
+    && apt-get install -y build-essential libboost-program-options-dev libboost-filesystem-dev libboost-graph-dev libboost-regex-dev libboost-system-dev \
+        libboost-test-dev libeigen3-dev libsuitesparse-dev libfreeimage-dev libgoogle-glog-dev libgflags-dev libglew-dev qtbase5-dev libqt5opengl5-dev libcgal-qt5-dev libatlas-base-dev libsuitesparse-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# WORKDIR /
+# RUN git clone https://ceres-solver.googlesource.com/ceres-solver \
+#     && cd ceres-solver \
+#     && git checkout $(git describe --tags) \
+#     && mkdir build \
+#     && cd build \
+#     && cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF \
+#     && make -j \
+#     && make install
+
+RUN apt-get update \
+    && apt-get install -y libflann-dev libcgal-qt5-dev colmap \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# WORKDIR /
+# RUN git clone https://github.com/colmap/colmap \
+#     && cd colmap \
+#     && mkdir build \
+#     && cd build \
+#     && cmake .. -GNinja -DCMAKE_CUDA_ARCHITECTURES=all-major\
+#     && ninja -j \
+#     && ninja install
+
+# RUN conda install -c conda-forge colmap
 WORKDIR /f2-nerf
