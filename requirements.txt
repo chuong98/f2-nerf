@@ -2,5 +2,5 @@ click
 numpy
 OmegaConf
 hydra-core
-opencv-python
+# opencv-python
 scipy

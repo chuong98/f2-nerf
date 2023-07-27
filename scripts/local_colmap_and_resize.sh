@@ -19,9 +19,6 @@ DATASET_PATH=$1
 CAMERA=OPENCV
 
 USE_GPU=1
-# Replace this with your own local copy of the file.
-# Download from: https://demuc.de/colmap/#download
-VOCABTREE_PATH=/f2-nerf/data/vocab_tree_flickr100K_words32K.bin
 
 # Run COLMAP.
 
@@ -37,13 +34,16 @@ colmap exhaustive_matcher \
     --database_path "$DATASET_PATH"/database.db \
     --SiftMatching.use_gpu "$USE_GPU"
 
-## Use if your scene has > 500 images
-## Replace this path with your own local copy of the file.
-## Download from: https://demuc.de/colmap/#download
-# colmap vocab_tree_matcher \
-#     --database_path "$DATASET_PATH"/database.db \
-#     --VocabTreeMatching.vocab_tree_path $VOCABTREE_PATH \
-#     --SiftMatching.use_gpu "$USE_GPU"
+# ## Replace this with your own local copy of the file.
+# ## Download from: https://demuc.de/colmap/#download
+# # VOCABTREE_PATH=/working/data/vocab_tree_flickr100K_words32K.bin
+# ## Use if your scene has > 500 images
+# ## Replace this path with your own local copy of the file.
+# ## Download from: https://demuc.de/colmap/#download
+# # colmap vocab_tree_matcher \
+# #     --database_path "$DATASET_PATH"/database.db \
+# #     --VocabTreeMatching.vocab_tree_path $VOCABTREE_PATH \
+# #     --SiftMatching.use_gpu "$USE_GPU"
 
 
 
@@ -62,7 +62,7 @@ colmap image_undistorter \
     --output_path "$DATASET_PATH"/dense \
     --output_type COLMAP
 
-# Resize images.
+# # Resize images.
 
 cp -r "$DATASET_PATH"/images "$DATASET_PATH"/images_2
 
